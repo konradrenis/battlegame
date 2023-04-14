@@ -15,10 +15,12 @@ class BATTLEGAME_API ABaseUnit : public APawn
 public:
 	// Sets default values for this pawn's properties
 	ABaseUnit();
+	
 
 private:
+	class UnitStateMachine* stateMachine;
+	UPROPERTY(EditAnywhere)
 	float movementSpeed;
-
 	UPROPERTY(EditAnywhere)
 	class UHealthComponent* HealthComponent;
 	UPROPERTY(EditAnywhere)
@@ -27,7 +29,12 @@ private:
 	class UCapsuleComponent* CapsuleCollider;
 
 public:
+	class UnitStateDefault* stateDefault;
+	class UnitStateWaiting* stateWaiting;
+
+public:
 	class UHealthComponent* GetHealthComponent();
+	class UnitStateMachine* GetStateMachine();
 
 #pragma region UnrealCallbacks
 protected:
