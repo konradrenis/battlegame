@@ -28,6 +28,8 @@ private:
 	UPROPERTY(EditAnywhere)
 	class UCapsuleComponent* CapsuleCollider;
 
+	static TArray<ABaseUnit*> instances;
+
 public:
 	class UnitStateDefault* stateDefault;
 	class UnitStateWaiting* stateWaiting;
@@ -35,6 +37,7 @@ public:
 public:
 	class UHealthComponent* GetHealthComponent();
 	class UnitStateMachine* GetStateMachine();
+	TArray<ABaseUnit*> GetInstances();
 
 #pragma region UnrealCallbacks
 protected:

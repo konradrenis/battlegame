@@ -12,6 +12,8 @@
 // Sets default values
 ABaseUnit::ABaseUnit()
 {
+	instances.Add(this);
+
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("Health Component"));
@@ -21,6 +23,7 @@ ABaseUnit::ABaseUnit()
 
 	StaticMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Static Mesh"));
 	StaticMesh->SetupAttachment(CapsuleCollider);
+	
 
 	
 
@@ -34,6 +37,11 @@ UHealthComponent* ABaseUnit::GetHealthComponent()
 UnitStateMachine* ABaseUnit::GetStateMachine()
 {
 	return stateMachine;
+}
+
+TArray<ABaseUnit*> ABaseUnit::GetInstances()
+{
+	return instances;
 }
 
 // Called when the game starts or when spawned
